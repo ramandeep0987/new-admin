@@ -1,0 +1,132 @@
+
+<%- include('../common/header'); -%>
+  <%- include('../common/sidebar'); -%>
+
+      <div class="app-content content ">
+        <div class="content-wrapper container-xxl p-0">
+          <div class="content-body">
+            <section id="multiple-column-form">
+              <div class="row">
+                <div class="col-md-11 col-12 mx-auto">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="card-title">Commission Percentage</h4>
+                    </div>
+                    <br>
+                    <div class="card-body">
+                      <form class="form form-horizontal" action="/update_serviceFee" method="POST" id="profile"
+                        enctype="multipart/form-data">
+                        <div class="row">
+                          <div class="col-md-8" style="margin-top: 10px;">
+                            <div class="mb-1 row">
+                              <div class="col-sm-2">
+                                <label class="col-form-label new_lable" for="name">Percentage</label>
+                              </div>
+                              <div class="col-sm-10">
+                                <input type="number" id="service_charge" class="form-control" name="service_charge" value="<%=serviceFeeData.service_charge%>"
+                                  maxlength="10" required>
+                                <input type="hidden" name="_id" value="<%=serviceFeeData._id%>">
+                                
+                              </div>
+                            </div>       
+                           <div class="col-12">
+                              <div class="col-sm-9 offset-sm-6">
+                                <button type="submit"
+                                  class="btn waves-effect waves-float waves-light">Update</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+      <div class="sidenav-overlay"></div>
+      <div class="drag-target"></div>
+
+      <%- include('../common/footer'); -%>
+
+      <script>
+        setTimeout(function () {
+          $("div.msg").fadeOut();
+        }, 2000);
+      </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+          integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script>
+          $(document).ready(function () {
+
+            jQuery.validator.addMethod("noSpace", function (value, element) {
+              return value == '' || value.trim().length != 0;
+            }, "No space allowed");
+
+            $('#profile').validate({
+              rules: {
+                activity_name: {
+                  required: true,
+                  noSpace: true,
+                  maxlength: 60
+                },
+               
+
+              },
+
+              errorElement: "div",
+              errorClass: "jqval-error",
+              errorPlacement: function (error, element) {
+                error.insertAfter(element);
+                error.slideDown(400);
+                error.animate({
+                  opacity: 1
+                }, {
+                  queue: false,
+                  duration: 700
+                });
+              },
+
+              submitHandler: function (form) {
+                var error = $(".assign_error_div").text();
+                if (!error) {
+                  form.submit();
+                }
+              }
+            });
+          });
+        </script>
+
+        <script>
+          $(window).on('load', function () {
+            if (feather) {
+              feather.replace({
+                width: 14,
+                height: 14
+              });
+            }
+          })
+        </script>
+
+        <script>
+          // for preview of image
+          function loadFile(event, c) {
+            var image = document.getElementById(c);
+            image.src = URL.createObjectURL(event.target.files[0]);
+          }
+
+          // imgInp.onchange = evt => {
+          //   const [file] = imgInp.files
+          //   if (file) {
+          //     profile_image.src = URL.createObjectURL(file)
+          //   }
+          // }
+
+
+        </script>
+
+

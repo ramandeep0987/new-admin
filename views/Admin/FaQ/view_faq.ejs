@@ -1,0 +1,94 @@
+<%- include('../common/header') %>
+  <%- include('../common/sidebar') %>
+
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+
+      <div class="content-wrapper container-xxl p-0">
+        <div class="content-body">
+          <section id="multiple-column-form">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-12 ">
+                <div class="card">
+                  <div class="card-header">
+                    <h4 class="card-title"> FAQ Details</h4>
+                  </div>
+                  <br>
+                  <div class="card-body">
+                    <form class="form form-vertical" action="/faq_list" method="get" id="profile"
+                      enctype="multipart/form-data">
+                      <div class="mb-1 row">
+                        <div class="col-sm-2">
+                          <label class="col-form-label new_lable" for="name"> Question</label>
+                        </div>
+                        <div class="col-sm-10">
+                          <input type="text" id="tool_name" class="form-control" name="tool_name" value="<%=faqData.question%>" disabled>
+                        </div>
+                      </div>
+                      <div class="mb-1 row">
+                        <div class="col-sm-2">
+                          <label class="col-form-label new_lable" for="name"> Answer</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <textarea class="form-control"  name="answer"  value="" data-height="100" disabled><%=faqData.answer%></textarea> <br>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="col-sm-9 offset-sm-5">
+                            <button type="submit" class="btn">Back <i class="icon-arrow-right14 position-right"></i></button> 
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+    <%- include('../common/footer') %>
+
+    <script>
+      $(document).ready(function () {
+
+        jQuery.validator.addMethod("noSpace", function (value, element) {
+          return value == '' || value.trim().length != 0;
+        }, "No space please and don't leave it empty");
+
+        $('#profile').validate({
+          rules: {
+            activity_name: {
+              required: true,
+              noSpace: true,
+              maxlength: 60
+            },
+           
+
+          },
+
+          errorElement: "div",
+          errorClass: "jqval-error",
+          errorPlacement: function (error, element) {
+            error.insertAfter(element);
+            error.slideDown(400);
+            error.animate({
+              opacity: 1
+            }, {
+              queue: false,
+              duration: 700
+            });
+          },
+
+          submitHandler: function (form) {
+            var error = $(".assign_error_div").text();
+            if (!error) {
+              form.submit();
+            }
+          }
+        });
+      });
+    </script>

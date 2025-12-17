@@ -1,0 +1,175 @@
+<%-include('../common/header');-%>
+<%-include('../common/sidebar');-%>
+
+<div class="app-content content ">
+  <div class="content-overlay"></div>
+  <div class="header-navbar-shadow"></div>
+  <div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+      <section id="responsive-datatable">
+        <div class="row">
+          <div class="card">
+            <div class="card-header border-bottom">
+              <h4 class="card-title">Booking List</h4>
+              <!-- <div class="section-header-breadcrumb-right">
+                            <a href="/addUser" class="btn btn-primary float-right" title="Edit Profile"> Add User </a>    
+                        </div> -->
+            </div>
+            <div class="card-DataTable table-responsive">
+              <table class="table table-hover-animation" id="myTable" style="color: rgb(65, 64, 64);">
+                <thead>
+                  <tr>
+                    <th>S NO.</th>
+                    <th>User</th>
+                    <th>Image</th>
+                    <th>job type</th>
+                    <th>Provider</th>
+                    <th>jobtitle</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <%bookingdatas.forEach(function(data,i) {%>
+                  <tr>
+                    <td><%=1+i%></td>
+                    <td><%=data.userId ? data.userId.firstname : "User not available" %></td>
+                    <td><img src="https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg" width="35" height="35" class="rounded-pill" alt=""></td>
+                    <td><%=data.categoryId ? data.categoryId.name : "" %></td>
+
+                    <td><%=data.workerId ? data.workerId.firstname : "worker not assigned" %></td>
+                    <td><%=data.SubCategoryId ? data.SubCategoryId.name : "" %></td>
+                    <td>
+                      <% if (data.status == 1) { %>Pending
+                      <% } else if (data.status == 0) { %>Cancelled
+                      <% } else if (data.status == 1) { %>Requested
+                      <% } else if (data.status == 2) { %>Accepted
+                      <% } else if (data.status == 3) { %>On Going
+                      <% } else if (data.status == 4) { %>Completed
+                      <% } %>
+                    </td>
+                    <!-- <td>
+                            <select class="form-control"
+                              onchange="changeStatusPayment(this.value,this.getAttribute('data-id'))"
+                              data-id="<%= data.id %>" name id="complaint_status"
+                              <%=data.status== '3' ? 'disabled' : '' %>>
+                              <option class="text-capitalize" data-id="<%= data.id %>" value="1" <%=data.status== '1' ? 'selected' : '' %>>Requested</option>
+                              <option class="text-capitalize" data-id="<%= data.id %>" value="2" <%=data.status== '2' ? 'selected' : '' %>>Approved</option>
+                              <option class="text-capitalize" data-id="<%= data.id %>" value="3" <%=data.status== '3' ? 'selected' : '' %>>Rejected</option>
+                              <option class="text-capitalize" data-id="<%= data.id %>" value="4" <%=data.status== '4' ? 'selected' : '' %>>On Going</option>
+                              <option class="text-capitalize" data-id="<%= data.id %>" value="5" <%=data.status== '5' ? 'selected' : '' %>>Completed</option>
+                            </select>
+                          </td> -->
+                    <td>
+                      <a href="/viewBooking/<%=data._id%>" class="btn btn-sm bg-info">
+                        <svg width="18px" height="15px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M21.2572 10.9622C21.7314 11.5813 21.7314 12.4187 21.2572 13.0378C19.764 14.9868 16.1818 19 12 19C7.81823 19 4.23598 14.9868 2.74284 13.0378C2.26857 12.4187 2.26856 11.5813 2.74283 10.9622C4.23598 9.01321 7.81823 5 12 5C16.1818 5 19.764 9.01321 21.2572 10.9622Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                          <circle cx="12" cy="12" r="3" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </a>
+                      <!-- <a href="/editBooking/<%=data._id%>" class="btn btn-sm bg-warning"><i class="fas fa-edit"></i></a> -->
+                      <!-- <button onclick="confirmDelete('<%=data._id%>')" class="btn btn-sm bg-danger"> <i class="fa fa-trash"></i> </button> -->
+                    </td>
+                  </tr>
+                  <%} )%>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div class="sidenav-overlay"></div>
+<div class="drag-target"></div>
+
+<%- include('../common/footer'); -%>
+
+<script>
+  $(document).ready(function() {
+    $('#myTable').DataTable();
+  });
+</script>
+
+<script>
+  setTimeout(function() {
+    $("div.msg").fadeOut();
+  }, 2000);
+</script>
+
+<script>
+  $(document).ready(function() {
+    // alert("ready!");
+  });
+
+  function confirmDelete(id) {
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-danger',
+        cancelButton: 'btn btn-success'
+      },
+      buttonsStyling: true
+
+    })
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((isConfirm) => {
+      // console.log(isConfirm)
+      // return
+      if (isConfirm.isConfirmed) {
+        // alert('asd')
+        $.ajax({
+          url: "/delete_user/:id",
+          type: 'delete',
+          data: {
+            id: id
+          },
+          success: function(result) {}
+        });
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'The user has been deleted .',
+          'success'
+        ).then(() => {
+          location.reload();
+        })
+      } else {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'The user is safe :)',
+          'error'
+        )
+      }
+    })
+
+  }
+</script>
+
+
+
+<script>
+  function changeStatusPayment(value, id) {
+
+    $.ajax({
+      type: "post",
+      url: `/bookingStatus`,
+      data: {
+        method_id: id,
+        status: value
+      },
+      success: function(resp) {
+        // console.log('resp: ', resp);
+        location.reload();
+      }
+    })
+  }
+</script>

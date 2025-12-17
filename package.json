@@ -1,0 +1,40 @@
+{
+  "name": "sunday",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon diytech.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "~1.4.4",
+    "country-state-city": "^3.2.1",
+    "debug": "~2.6.9",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.10",
+    "express": "~4.16.1",
+    "express-fileupload": "^1.4.0",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.18.0",
+    "fcm": "^1.0.3",
+    "fcm-node": "^1.6.1",
+    "http-errors": "~1.6.3",
+    "https": "^1.0.0",
+    "jade": "~1.11.0",
+    "jsonwebtoken": "^9.0.1",
+    "latest": "^0.2.0",
+    "mongoose": "^7.5.0",
+    "morgan": "~1.9.1",
+    "node-cron": "^3.0.3",
+    "node-input-validator": "^4.5.1",
+    "nodemailer": "^6.9.4",
+    "nodemon": "^2.0.22",
+    "socket.io": "^4.7.2",
+    "stripe": "^12.17.0",
+    "sweetalert2": "^11.7.12",
+    "uuidv4": "^6.2.13",
+    "validator": "^13.9.0",
+    "yarn": "^1.22.19"
+  }
+}

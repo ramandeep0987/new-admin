@@ -1,0 +1,121 @@
+<%- include('../common/header') %>
+  <%- include('../common/sidebar') %>
+
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+
+      <div class="content-wrapper container-xxl p-0">
+        <div class="content-body">
+          <section id="multiple-column-form">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-12 ">
+                <div class="card">
+                  <div class="card-header">
+                    <h4 class="card-title"> Add Sub Category</h4>
+                  </div>
+                  <br>
+                  <div class="card-body">
+                    <form class="form form-vertical"  id="profile" action="/add_subcategory" method="POST" 
+                      enctype="multipart/form-data">
+
+                      <div class="col-12 col-md-12 col-lg-10 offset-lg-0 ">
+                        <div class="mb-1 row">
+                          <div class="col-12">
+                            <label class="col-form-label" for="name">Category List</label>
+                            <select id="categoryId" name="categoryId" class="form-control">
+                              <option value="">Select Category Name</option>
+                              <% for(let i in get_data) { %>
+                              <option value="<%= get_data[i]._id %>">
+                                <%=get_data[i].name %>
+                              </option>
+                              <% } %>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="mb-1 row">
+                        <div class="col-sm-2">
+                          <label class="col-form-label new_lable" for="name">Category Name</label>
+                        </div>
+                        <div class="col-sm-10">
+                          <input type="text" id="name" class="form-control" name="name">
+                        </div>
+                      </div>
+                      <div class="mb-1 row">
+                        <div class="col-sm-2">
+                          <label class="col-form-label new_lable" for="price">Image</label>
+                        </div>
+                        <div class="col-sm-10">
+                          <input type="file" id="image" name="image" accept="image/*" class="form-control" name="image" value="" required>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="col-sm-9 offset-sm-5">
+                          <button type="submit"
+                            class="btn waves-effect waves-float waves-light">Submit</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+    <%- include('../common/footer') %>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+    integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script>
+    $(document).ready(function () {
+    
+      jQuery.validator.addMethod("noSpace", function (value, element) {
+          return value == '' || value.trim().length != 0;
+      }, "No space allowed");
+    
+      jQuery.validator.addMethod("noSpecialChars", function (value, element) {
+          // Regular expression to disallow special characters
+          return /^[a-zA-Z0-9\s]*$/.test(value);
+      }, "Special characters are not allowed");
+    
+      $('#profile').validate({
+          rules: {
+            name: {
+                  required: true,
+                  noSpace: true,
+                  noSpecialChars: true,
+                  maxlength: 30
+              },
+          },
+    
+          errorElement: "div",
+          errorClass: "jqval-error",
+          errorPlacement: function (error, element) {
+              error.insertAfter(element);
+              error.slideDown(400);
+              error.animate({
+                  opacity: 1
+              }, {
+                  queue: false,
+                  duration: 700
+              });
+          },
+    
+          submitHandler: function (form) {
+              var error = $(".assign_error_div").text();
+              if (!error) {
+                  form.submit();
+              }
+          }
+      });
+    });
+    </script>

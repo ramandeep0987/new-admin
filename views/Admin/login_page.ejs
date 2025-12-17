@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
+  <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+  <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
+  <meta name="author" content="PIXINVENT">
+  <title>Login Page</title>
+  <link rel="icon" type="image/x-icon" href="/app-assets/favicon.png">
+
+  <!-- BEGIN: Vendor CSS-->
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/vendors.min.css">
+  <!-- END: Vendor CSS-->
+
+  <!-- BEGIN: Theme CSS-->
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/css/bootstrap-extended.css">
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/css/colors.css">
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/css/components.css">
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/css/themes/dark-layout.css">
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/css/themes/bordered-layout.css">
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/css/themes/semi-dark-layout.css">
+
+  <!-- BEGIN: Page CSS-->
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/css/core/menu/menu-types/vertical-menu.css">
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/css/plugins/forms/form-validation.css">
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/css/pages/page-auth.css">
+  <!-- END: Page CSS-->
+
+  <link rel="stylesheet" type="text/css" href="../../../assets/css/style.css">
+
+</head>
+
+<% if(msg !='' ) { %>
+<div class="alert alert-success msg" style="position: absolute; z-index: 9999; right: 100px; top: 10px;">
+  <span style="font-size: 18px; padding: 10px; border-radius: 5px; color: rgb(232, 232, 240);  background-color: #e33838;">
+    <%= msg %>
+  </span>
+</div>
+<% } %>
+
+<style>
+  .error {
+    color: red !important;
+  }
+
+
+  .passwordEye {
+    position: relative;
+  }
+
+  .passwordEye .int_eye {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+  }
+</style>
+
+<style>
+  body {
+    background: url("/app-assets/sundaybgimage.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: fixed;
+    width: 100%;
+    height: 50%;
+  }
+
+  .auth-wrapper.auth-v1 .auth-inner::before {
+    display: none;
+  }
+
+  .auth-inner .card {
+    background-color: #0398fce4;
+    backdrop-filter: blur(6px);
+  }
+
+  .auth-wrapper.auth-v1 .auth-inner {
+    max-width: 400px;
+
+  }
+
+  .auth-wrapper.auth-v1 .auth-inner {
+    position: relative;
+
+  }
+
+  .card>.card-body {
+    border: none !important;
+  }
+
+  @media (max-height: 625px) {
+    .auth-wrapper .auth-inner {
+      background-color: transparent;
+    }
+  }
+
+  @media (max-width: 991.98px) {
+    .auth-inner .card {
+      backdrop-filter: none;
+    }
+  }
+</style>
+
+<!-- BEGIN: Body-->
+
+<body class="vertical-layout vertical-menu-modern blank-page navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="blank-page">
+  <!-- BEGIN: Content-->
+  <div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+      <div class="content-body">
+        <div class="auth-wrapper auth-v1 px-2">
+          <div class="auth-inner py-2">
+            <div class="card mb-0">
+              <div class="card-body">
+                <a href="#" class="brand-logo">
+                  <img src="/app-assets/sundayicon.png" alt="logo" width="150">
+                </a>
+                <h4 class="card-title mb-1" style="color: rgb(32, 30, 30);">Sign in</h4>
+                <form class="needs-validation" action="/Login" id="addForm" method="POST">
+                  <div class="mb-1">
+                    <label for="login-email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="john@example.com" aria-describedby="login-email" tabindex="1" autofocus />
+                  </div>
+                  <div class="mb-1">
+                    <div class="d-flex justify-content-between">
+                      <label class="form-label" for="password">Password</label>
+                    </div>
+                    <!-- <div class="passwordEye  form-password-toggle">
+                    <input id="password" type="password" class="form-control" name="password" tabindex="2" 
+                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                    aria-describedby="login-password" required>
+                    <i class="fas fa-eye-slash int_eye" data-feather="eye" id="eye" ></i>
+                  </div> -->
+                    <div class="input-group input-group-merge form-password-toggle interror">
+                      <input type="password" class="form-control form-control-merge" id="password" name="password" tabindex="2" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="login-password" />
+                      <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
+                    </div>
+                  </div>
+                  <div class="mb-0 row justify-content-center">
+                    <div class="col-sm-5 text-center">
+                      <button type="submit" class="btn waves waves-float waves-light">Sign in</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END: Content-->
+
+
+  <!-- BEGIN: Vendor JS-->
+  <script src="../../../app-assets/vendors/js/vendors.min.js"></script>
+  <!-- BEGIN Vendor JS-->
+
+  <!-- BEGIN: Page Vendor JS-->
+  <script src="../../../app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+  <!-- END: Page Vendor JS-->
+
+  <!-- BEGIN: Theme JS-->
+  <script src="../../../app-assets/js/core/app-menu.js"></script>
+  <script src="../../../app-assets/js/core/app.js"></script>
+  <!-- END: Theme JS-->
+
+  <!-- BEGIN: Page JS-->
+
+  <script src="../../../app-assets/js/scripts/pages/page-auth-login.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.20.0/dist/jquery.validate.min.js" integrity="sha256-ic6hxNWCB3IBDsXq0z5KpKHmcJc1anmnh0xGOi0C5Dw=" crossorigin="anonymous"></script>
+  <!-- END: Page JS-->
+
+  <script>
+    $(window).on('load', function() {
+      if (feather) {
+        feather.replace({
+          width: 14,
+          height: 14
+        });
+      }
+    })
+  </script>
+
+</body>
+
+</html>
+
+<script>
+  setTimeout(function() {
+    $("div.msg").fadeOut();
+  }, 3000);
+
+  $('#eye').click(function() {
+
+    if ($(this).hasClass('fa-eye-slash')) {
+
+      $(this).removeClass('fa-eye-slash');
+
+      $(this).addClass('fa-eye');
+
+      $('#password').attr('type', 'text');
+
+    } else {
+
+      $(this).removeClass('fa-eye');
+
+      $(this).addClass('fa-eye-slash');
+
+      $('#password').attr('type', 'password');
+    }
+  });
+</script>
+
+<script>
+  // Use jQuery's document.ready to ensure all elements are loaded before binding events
+  $(document).ready(function() {
+    $('#eye').click(function() {
+      var passwordInput = $('#password');
+      if ($(this).hasClass('fa-eye-slash')) {
+        $(this).removeClass('fa-eye-slash').addClass('fa-eye');
+        passwordInput.attr('type', 'text');
+      } else {
+        $(this).removeClass('fa-eye').addClass('fa-eye-slash');
+        passwordInput.attr('type', 'password');
+      }
+    });
+  });
+</script>
+
+<script>
+  $(document).ready(function() {
+
+    jQuery.validator.addMethod("noSpace", function(value, element) {
+        return value == '' || value.trim().length != 0;
+      },
+
+      jQuery.validator.addMethod("emailExt", function(value, element, param) {
+        return value.match(/^[a-zA-Z0-9_\.%\+\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,}$/);
+      }, 'Your e-mail is wrong'),
+
+      $('form[id="addForm"]').validate({
+
+        keypress: function(element) {
+
+          var element_id = $(element).attr('id');
+          if (this.settings.rules[element_id].keypress !== false) {
+            $(element).valid();
+          }
+        },
+
+        rules: {
+          email: {
+            required: true,
+            emailExt: true,
+            noSpace: true,
+          },
+          password: {
+            required: true,
+            minlength: 5
+          },
+
+        },
+        messages: {
+
+          email: {
+            required: " This filed is required",
+          },
+          password: {
+            required: "This filed is required",
+            minlength: "Password should be minimum 5 characters"
+          },
+
+        },
+        submitHandler: function(form) {
+          form.submit();
+        }
+      }));
+  });
+</script>

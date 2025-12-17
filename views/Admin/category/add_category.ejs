@@ -1,0 +1,312 @@
+<body style="margin:0; padding:0; background:linear-gradient(135deg,#e2e8f0,#f8fafc); font-family:'Inter', sans-serif;">
+
+<style>
+  .form-container {
+    max-width: 600px;
+    margin: 60px auto;
+    background: rgba(0, 30, 255, 0.329);
+    padding: 40px 45px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    animation: fadeIn 0.6s ease;
+  }
+
+  .form-title {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 28px;
+    color: #1f2937;
+    text-align: center;
+  }
+
+  .input-group {
+    position: relative;
+    margin-bottom: 30px;
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 14px 12px;
+    border: 1.8px solid #13131594;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    background: transparent;
+    transition: all 0.2s ease;
+  }
+/* Ensure select text looks good */
+.input-field select,
+.input-field option {
+  font-size: 16px;
+  color: #111;
+}
+
+/* Fix floating label behavior for <select> */
+.input-group select:focus + .floating-label,
+.input-group select:not([value=""]) + .floating-label,
+.input-group select:not(:placeholder-shown) + .floating-label {
+    top: -8px;
+    left: 10px;
+    background: white;
+    padding: 0 6px;
+    font-size: 13px;
+    color: #2563eb;
+}
+
+  .input-field:focus {
+    border-color: #4285f4;
+    box-shadow: 0 0 0 3px rgba(66,133,244,0.15);
+  }
+
+  .floating-label {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    font-size: 15px;
+    color: #6b7280;
+    pointer-events: none;
+    transition: 0.2s;
+  }
+
+  .input-field:focus + .floating-label,
+  .input-field:not(:placeholder-shown) + .floating-label {
+    top: -8px;
+    left: 10px;
+    background: white;
+    padding: 0 6px;
+    font-size: 13px;
+    color: #2563eb;
+  }
+
+  /* File input style */
+  .file-input {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1.8px solid #d1d5db20;
+    background: #f9f9fb21;
+    width: 100%;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .file-input:hover {
+    border-color: #2563eb;
+  }
+
+  /* Button */
+  .submit-btn {
+    width: 100%;
+    padding: 14px 0;
+    background: #27324a;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .submit-btn:hover {
+    background: #1e3a8a;
+  }
+
+  @keyframes fadeIn {
+    from { opacity:0; transform: translateY(10px); }
+    to { opacity:1; transform: translateY(0); }
+  }
+</style>
+
+<div class="form-container">
+
+    <h2 class="form-title">Feedback Form - OPD Services ਫੀਡਬੈਕ ਫਾਰਮ - ਓਪੀਡੀ  ਸੇਵਾਵਾਂ</h2>
+
+    <form id="profile" action="/Create_category" method="POST" enctype="multipart/form-data">
+
+        <!-- Category Name -->
+        <div class="input-group">
+          <input type="text" id="name" name="name" class="input-field" placeholder=" " />
+          <label class="floating-label">Patients Name/ ਮਰੀਜ਼ ਦਾ ਨਾਮ
+</label>
+        </div>
+
+
+           <div class="input-group">
+          <input type="number" id="name" name="mrdnumber" class="input-field" placeholder=" " />
+          <label class="floating-label">MRD Number/ ਐਮ ਆਰ ਡੀ ਨੰਬਰ  
+</label>
+        </div>   <div class="input-group">
+
+          
+
+
+
+
+          <input type="text" id="name" name="date" class="input-field" placeholder=" " />
+          <label class="floating-label">Date Of OPD Visit/ ਓਪੀਡੀ ਆਉਣ ਦੀ ਮਿਤੀ
+</label>
+        </div> 
+        
+
+        <div class="input-group">
+          <input type="text" id="name" name="number" class="input-field" placeholder=" " />
+          <label class="floating-label">Contact Number/ ਮੋਬਾਈਲ ਨੰਬਰ
+</label>
+        </div>   
+
+
+          <div class="input-group">
+          <input type="text" id="name" name="doctorname" class="input-field" placeholder=" " />
+          <label class="floating-label">Doctor Name/ ਡਾਕਟਰ ਦਾ ਨਾਮ
+</label>
+        </div>   
+        
+          <div class="input-group">
+  <select id="services" name="services" class="input-field" style="appearance:none;">
+      <option value="" class="floating-label" disabled selected hidden> Select</option>
+      <option value="Satisfied">Satisfied/ ਸੰਤੁਸ਼ਟ</option>
+      <option value="Unsatisfied">Unsatisfied/ ਅਸੰਤੁਸ਼ਟ</option>
+      
+      
+  </select>
+  <label class="floating-label">Were you satisfied with the hospital services?/  ਕੀ ਤੁਸੀਂ ਹਸਪਤਾਲ ਵੱਲੋਂ ਦਿੱਤੀਆਂ ਗਈਆਂ ਸੇਵਾਵਾਂ ਨਾਲ ਸੰਤੁਸ਼ਟ ਹੋ?  
+</label>
+</div>
+
+    
+
+
+        <div class="input-group">
+  <select id="facilities" name="facilities" class="input-field" style="appearance:none;">
+      <option value="" class="floating-label" disabled selected hidden> Select</option>
+      <option value="parking">Parking/ ਪਾਰਕਿੰਗ</option>
+      <option value="Wheel chair and trolly">Wheel chair and trolly/ ਵ੍ਹੀਲਚੇਅਰ ਅਤੇ ਮਰੀਜ਼ ਟ੍ਰਾਲੀ</option>
+       <option value="Blood Collection Center">Blood Collection Center/ ਬਲੱਡ ਕਲੇਕਸ਼ਨ ਸੈਂਟਰ</option>
+      <option value="X-R/CT Scan/MRI">X-R/CT Scan/MRI/ ਐਕਸ-ਰੇ/ਸੀ ਟੀ ਸਕੈਨ/ਐਮ ਆਰ ਆਈ</option>
+       <option value="Help Desk">Help Desk/ ਹੈਲਪ ਡੈਸਕ / ਪੁੱਛਗਿੱਛ
+</option>
+      <option value="Registration Desk">Registration Desk/ ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਡੈਸਕ / ਬਿਲਿੰਗ ਕਾਊਂਟਰ
+</option>
+       <option value="Nursing Care">Nursing Care/ ਨਰਸਿੰਗ ਦੇਖਭਾਲ
+</option>
+      <option value="BP Counter">BP Counter/ ਬੀਪੀ ਕਾਊਂਟਰ
+</option>
+       <option value="OPD Waiting">OPD Waiting/ ਓਪੀਡੀ ਵੇਟਿੰਗ ਏਰੀਆ</option>
+      <option value="Doctor Consult">Doctor Consult/ ਡਾਕਟਰ ਦੀ ਸਲਾਹ।</option>
+      <option value="Pharmacy Information About How To Take Your Medicines">Pharmacy Information About How To Take Your Medicines/ /ਦਵਾਈਆਂ/ਦਵਾਈ ਖਾਣ ਬਾਰੇ ਜਾਣਕਾਰੀ
+</option>
+
+      <option value="Physiotherapy">Physiotherapy/ ਫਿਜ਼ੀਓਥੈਰੇਪੀ</option>
+      <option value="Food And Beverage Facilities">Food And Beverage Facilities/ ਖਾਣ-ਪੀਣ ਦਾ ਪ੍ਰਬੰਧ
+</option>
+      <option value="Cleanliness">Cleanliness/ ਸਾਫ਼ ਸਫ਼ਾਈ
+</option>
+      <option value="Security">Security/ ਸੁਰੱਖਿਆ </option>
+      <option value="Safe & secure environment for treatment">Safe & secure environment for treatment/ ਇਲਾਜ ਲਈ ਸੁਰੱਖਿਅਤ ਵਾਤਾਵਰਣ
+</option>
+      <option value="Patient rights respected by staff">Patient rights respected by staff/ਸਟਾਫ ਦੁਆਰਾ ਮਰੀਜ਼ਾਂ ਦੇ ਅਧਿਕਾਰਾਂ ਦਾ ਠੀਕ ਤਰੀਕੇ ਨਾਲ ਸਤਿਕਾਰ</option>
+      <option value="Hospital staff communication">Hospital staff communication/ ਹਸਪਤਾਲ ਸਟਾਫ ਦਾ ਸੰਚਾਰ।
+</option>
+      <option value="Any Other">Any Other/ਹੋਰ ਕੋਈ</option>
+      
+  </select>
+  <label class="floating-label"> Please select the facilities which need better management </label>
+</div>
+
+ <div class="input-group">
+          <textarea type="text" id="Suggestion" name="Suggestion" class="input-field" placeholder=" " ></textarea>
+          <label class="floating-label">Please Mention Your Suggestion For Improvment As Par Your Experience/ ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੇ ਅਨੁਭਵ ਅਨੁਸਾਰ ਸੁਧਾਰ ਲਈ ਆਪਣੇ ਸੁਝਾਅ ਦਿਓ।</label>
+        </div>
+
+         <!-- <div class="input-group">
+
+  <select id="services" name="services" class="input-field" style="appearance:none;">
+      <option value="" class="floating-label" disabled selected hidden> Select</option>
+      <option value="1">yes</option>
+      <option value="2">No</option>
+      
+      
+  </select>
+  <label class="floating-label">Do you have your ABHA ID  (Ayushman Bharat Health Account) number?
+</label>
+</div> -->
+
+
+<!-- Select Box -->
+<div class="input-group">
+  <select id="Ayushmanid" class="input-field">
+      <option value="" disabled selected hidden>Select</option>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+  </select>
+  
+  <label class="floating-label">Do you have your ABHA ID (Ayushman Bharat Health Account) number?</label>
+</div>
+
+<!-- ABHA Box (Hidden by default) -->
+<div id="abhaBox" style="display:none; margin-top:10px;">
+  <p>Please enter your 14 digit ABHA ID number.</p>
+   <input type="text" maxlength="14" class="input-field" name="abhaid" placeholder="Enter ABHA ID Number">
+  <p>
+    Please create your ABHA ID using the link:<br>
+    <a href="https://abha.abdm.gov.in/abha/v3/" target="_blank">
+      https://abha.abdm.gov.in/abha/v3/
+    </a>
+  </p>
+
+ 
+</div>
+
+<script>
+document.getElementById("Ayushmanid").addEventListener("change", function() {
+    let value = this.value;
+    let abhaBox = document.getElementById("abhaBox");
+
+    if (value === "yes") {
+        abhaBox.style.display = "block";
+    } else {
+        abhaBox.style.display = "block";
+    }
+});
+</script>
+
+         
+
+
+
+        
+        <br><br>
+
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+
+</div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+document.getElementById("profile").addEventListener("submit", function(e){
+    e.preventDefault(); // stop normal submit
+
+    let formData = new FormData(this);
+
+    fetch("/Create_category", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.text())
+    .then(data => {
+        Swal.fire({
+            title: "Success!",
+            text: "Your response has been submitted.",
+            icon: "success",
+            confirmButtonText: "OK"
+        });
+
+        // you can also reset the form
+        document.getElementById("profile").reset();
+    })
+    .catch(err => {
+        Swal.fire("Error!", "Something went wrong.", "error");
+    });
+});
+</script>

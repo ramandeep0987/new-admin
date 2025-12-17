@@ -1,0 +1,204 @@
+<%-include('../common/header');-%>
+<%-include('../common/sidebar');-%>
+
+<div class="app-content content ">
+  <div class="content-overlay"></div>
+  <div class="header-navbar-shadow"></div>
+  <div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+      <section id="responsive-datatable">
+        <div class="row">
+          <div class="card">
+            <div class="card-header border-bottom">
+              <h4 class="card-title">Sub Category List</h4>
+              <div class="section-header-breadcrumb-right">
+                <a href="/addsubcategory/Page" class="btn float-right" title="Edit Profile"> Add Category </a>
+              </div>
+            </div>
+
+
+           <div class="col-sm-12">
+  <label class="col-form-label" for="name">Category List</label>
+  <form id="filterForm" method="get" action="/subCategory_listing">
+    <select id="categoryId" name="categoryId" class="form-control" onchange="document.getElementById('filterForm').submit()">
+    <option value="">Select Category Name</option>
+<% for(let i in get_data) { %>
+  <option value="<%= get_data[i]._id %>" <%= categoryId == get_data[i]._id ? 'selected' : '' %>>
+    <%= get_data[i].name %>
+  </option>
+<% } %>
+
+    </select>
+  </form>
+</div>
+
+
+            <div class="card-DataTable table-responsive">
+              <table class="table table-hover-animation" id="myTable" style="color: rgb(65, 64, 64);">
+                <thead>
+                  <tr>
+                    <th>S NO.</th>
+                    <th>SubCategory Name</th>
+
+                    <th>Category Name</th>
+                    
+                    <th>Image</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <%occupationlist.forEach(function(data,i) {%>
+                  <tr>
+                    <td> <%=1+i%> </td>
+                    
+                    <td> <%=data.categoryId.name%> </td>
+                    <td> <%=data.name%> </td>
+
+                    <td> <img src="<%=data.image%>" width="45px" height="40px"> </td>
+
+                    <td>
+                      <% if(data.status==1) { %>
+                      <button onclick="changeStatus(this)" id="userId_<%-data.id%>" class=" btn btn-sm btn-success status " data-id="<%=data._id%>" value="0">Active
+                      </button>
+                      <% } else { %>
+                      <button onclick="changeStatus(this)" id="userId_<%-data.id%>" class="btn btn-sm btn-danger status" data-id="<%=data._id%>" value="1" style="display: flex;">In-active </button>
+                      <% } %>
+                    </td>
+                    <td>
+                      <!-- <a href="/activity_view/<%=data._id%>" class="btn btn-sm bg-light-primary"><i data-feather='eye'></i></a> -->
+                      <a href="/edit_subcategory/<%=data._id%>" class="btn btn-sm bg-warning">
+                        <svg width="18px" height="15px" viewBox="0 0 11 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <path fill="#444" d="M16 4c0 0 0-1-1-2s-1.9-1-1.9-1l-1.1 1.1v-2.1h-12v16h12v-8l4-4zM6.3 11.4l-0.6-0.6 0.3-1.1 1.5 1.5-1.2 0.2zM7.2 9.5l-0.6-0.6 5.2-5.2c0.2 0.1 0.4 0.3 0.6 0.5zM14.1 2.5l-0.9 1c-0.2-0.2-0.4-0.3-0.6-0.5l0.9-0.9c0.1 0.1 0.3 0.2 0.6 0.4zM11 15h-10v-14h10v2.1l-5.9 5.9-1.1 4.1 4.1-1.1 2.9-3v6z"></path>
+                        </svg>
+                      </a>
+                      
+                      <button onclick="confirmDelete('<%=data._id%>')" class="btn btn-sm bg-danger">
+                        <svg width="15px" height="15px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M7 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2h4a1 1 0 1 1 0 2h-1.069l-.867 12.142A2 2 0 0 1 17.069 22H6.93a2 2 0 0 1-1.995-1.858L4.07 8H3a1 1 0 0 1 0-2h4V4zm2 2h6V4H9v2zM6.074 8l.857 12H17.07l.857-12H6.074zM10 10a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1z" fill="#0D0D0D" />
+                        </svg>
+                      </button>
+                    </td>
+                  </tr>
+                  <%} )%>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div class="sidenav-overlay"></div>
+<div class="drag-target"></div>
+
+<%- include('../common/footer'); -%>
+
+<script>
+  $(document).ready(function() {
+    $('#myTable').DataTable();
+  });
+</script>
+
+<script>
+  setTimeout(function() {
+    $("div.msg").fadeOut();
+  }, 2000);
+</script>
+
+<script>
+  $(document).ready(function() {
+    // alert("ready!");
+  });
+
+  function confirmDelete(id) {
+    console.log(">>>>>>>>done>>>>>>>>>>", id)
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-danger',
+        cancelButton: 'btn btn-success'
+      },
+      buttonsStyling: true
+
+    })
+
+    // console.log("------------------------------result------", id);
+
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((isConfirm) => {
+      // console.log(isConfirm)
+      // return
+      if (isConfirm.isConfirmed) {
+        // alert('asd')
+        $.ajax({
+          url: "/delete_subcategory/:id",
+          type: 'delete',
+          data: {
+            id: id
+          },
+          success: function(result) {}
+        });
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'The category has been deleted .',
+          'success'
+        ).then(() => {
+          location.reload();
+        })
+      } else {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'The category is safe :)',
+          'error'
+        )
+      }
+    })
+
+  }
+</script>
+
+
+<script>
+  const changeStatus = (val) => {
+    console.log(val)
+    let id = val.getAttribute('data-id')
+    let value = val.getAttribute('value')
+    let elemID = val.getAttribute('id')
+    elemID = document.getElementById(elemID)
+
+    $.ajax({
+      type: "post",
+      url: "/subcategory_status",
+      data: {
+        id: id,
+        value: value
+
+      },
+      success: function(data) {
+        if (data) {
+          elemID.setAttribute('value', 0)
+          elemID.innerText = `Active`
+          elemID.classList.remove('btn-danger')
+          elemID.classList.add('btn-success')
+        } else {
+          elemID.setAttribute('value', 1)
+          elemID.innerText = `IN-Active`
+          elemID.classList.remove('btn-success')
+          elemID.classList.add('btn-danger')
+        }
+        window.location.reload();
+      }
+    });
+  }
+</script>

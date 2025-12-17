@@ -1,0 +1,121 @@
+<%- include('../common/header') %>
+<%- include('../common/sidebar') %>
+
+<!-- BEGIN: Content-->
+<div class="app-content content ">
+  <div class="content-wrapper container-xxl p-0">
+    <section id="multiple-column-form">
+      <div class="row">
+        <div class="col-md-10 col-12 mx-auto">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title"> View Transaction</h4>
+            </div>
+            <div class="card-body">
+              <div class="row">
+
+                <div class="mb-1 row">
+                  <div class="col-sm-2">
+                      <label class="col-form-label new_label" for="total-amount">Transaction Id</label>
+                  </div>
+                  <div class="col-sm-4">
+                      <input type="text" id="total-amount" class="form-control" name="total-amount" value="<%=transData?.transactionId%>" disabled>
+                  </div>
+                  <div class="col-sm-2">
+                      <label class="col-form-label new_label" for="admin-charges">Transaction status</label>
+                  </div>
+                  <div class="col-sm-4">
+                      <input type="text" id="admin-charges" class="form-control" name="admin-charges" value="<%= transData?.payment_status %>" disabled>
+                  </div>
+                </div>
+
+                <div class="mb-1 row">
+                  <div class="col-sm-2">
+                      <label class="col-form-label new_label" for="total-amount">Booking Id</label>
+                  </div>
+                  <div class="col-sm-4">
+                      <input type="text" id="total-amount" class="form-control" name="total-amount" value="<%=transData?.bookingId._id%>" disabled>
+                  </div>
+                  <div class="col-sm-2">
+                      <label class="col-form-label new_label" for="admin-charges">Booking Status</label>
+                  </div>
+                  <div class="col-sm-4">
+                      <input type="text" id="admin-charges" class="form-control" name="admin-charges" value="<% if (transData.bookingId.status == 0) { %>Cancelled
+                        <% } else if (transData.bookingId.status == 1) { %>Requested
+                        <% } else if (transData.bookingId.status == 2) { %>Approved
+                        <% } else if (transData.bookingId.status == 3) { %>On going
+                        <% } else if (transData.bookingId.status == 4) { %>Completed
+                        <% } %>
+                      " disabled>
+                  </div>
+                </div>
+                <div class="mb-1 row">
+                  <div class="col-sm-2">
+                      <label class="col-form-label new_label" for="total-amount">User Name</label>
+                  </div>
+                  <div class="col-sm-4">
+                      <input type="text" id="total-amount" class="form-control" name="total-amount" value="<%=transData.userId.firstname ? transData.userId.firstname : "Details not found"%>" disabled>
+                  </div>
+                  <div class="col-sm-2">
+                      <label class="col-form-label new_label" for="admin-charges">Provider Name</label>
+                  </div>
+                  <div class="col-sm-4">
+                      <input type="text" id="admin-charges" class="form-control" name="admin-charges" value="<%=transData.workerId.firstname ? transData.workerId.firstname : "Provider not found"%>" disabled>
+                  </div>
+                </div>
+
+                <div class="mb-1 row">
+                  <div class="col-sm-2">
+                      <label class="col-form-label new_label" for="total-amount">Amount Paid</label>
+                  </div>
+                  <div class="col-sm-4">
+                      <input type="text" id="total-amount" class="form-control" name="total-amount" value="$ <%= transData?.total_amount %>" disabled>
+                  </div>
+                  <div class="col-sm-2">
+                    <label class="col-form-label new_label" for="total-amount"> Provider Charges</label>
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" id="total-amount" class="form-control" name="total-amount" value="$ <%= transData?.actual_amount %>" disabled>
+                </div>
+                </div>
+                <div class="mb-1 row">
+                  <div class="col-sm-2">
+                    <label class="col-form-label new_label" for="admin-charges">Admin Charges</label>
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" id="admin-charges" class="form-control" name="admin-charges" value="$ <%= transData?.admin_charges %>" disabled>
+                </div>
+                <div class="col-sm-2">
+                  <label class="col-form-label new_label" for="admin-charges">Refund Status</label>
+              </div>
+              <div class="col-sm-4">
+                  <input type="text" id="admin-charges" class="form-control" name="admin-charges" value="<%=transData?.refundId ? transData?.refundId : "NA" %>" disabled>
+              </div>
+                </div>
+                <div class="col-12">
+                  <div class="col-sm-9 offset-sm-5">
+                    <a href="/transaction_list" class="btn float-right" title="Edit Profile"> Back </a>
+                  </div>
+                </div>
+               
+              </div>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<div class="sidenav-overlay"></div>
+<div class="drag-target"></div>
+<%- include('../common/footer') %>
+    
+    <script>
+      $(document).ready(function () {
+        $('.table').DataTable(); // Initialize DataTable for all tables with the 'table' class
+      });
+    </script>
+
+
+

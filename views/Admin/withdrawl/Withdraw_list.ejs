@@ -1,0 +1,158 @@
+
+<%-include('../common/header');-%>
+<%-include('../common/sidebar');-%>
+
+<div class="app-content content ">
+  <div class="content-overlay"></div>
+  <div class="header-navbar-shadow"></div>
+  <div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+      <section id="responsive-datatable">
+        <div class="row">
+          <div class="card">
+            <div class="card-header border-bottom">
+              <h4 class="card-title">Withdraw List</h4>
+            </div>
+            <div class="card-DataTable table-responsive">
+              <table class="table table-hover-animation" id="myTable" style="color: rgb(65, 64, 64);" >
+                <thead>
+                  <tr>
+                    <th scope="col">S No.</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody> 
+                    <%listing.forEach(function(data,i) {%>
+                      <tr>
+                        <td> <%=1+i%></td>
+                        <td> <%=data.workerId ? data.workerId.firstname : "user not found"%></td>
+                        <td> $ <%=data.amount%></td>
+                        <td>
+                          <select class="form-control"
+                            onchange="changeStatusPayment(this.value,this.getAttribute('data-id'))"
+                            data-id="<%= data.id %>" name id="complaint_status"
+                            <%= (data.payment_status == '2' || data.payment_status == '3') ? 'disabled' : '' %>>
+                            <option class="text-capitalize" data-id="<%= data.id %>"
+                              value="1" <%=data.payment_status== '1' ? 'selected' : '' %>>Pending</option>
+                            <option class="text-capitalize" data-id="<%= data.id %>"
+                              value="2" <%=data.payment_status== '2' ? 'selected' : '' %>>Approved</option>
+                            <option class="text-capitalize" data-id="<%= data.id %>"
+                              value="3" <%=data.payment_status== '3' ? 'selected' : '' %>>Rejected</option>
+                          </select>
+                        </td>
+                        <td>
+                            <a href="/view_Withdraw/<%=data._id%>" class="btn btn-sm bg-info"> <svg width="18px" height="15px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M21.2572 10.9622C21.7314 11.5813 21.7314 12.4187 21.2572 13.0378C19.764 14.9868 16.1818 19 12 19C7.81823 19 4.23598 14.9868 2.74284 13.0378C2.26857 12.4187 2.26856 11.5813 2.74283 10.9622C4.23598 9.01321 7.81823 5 12 5C16.1818 5 19.764 9.01321 21.2572 10.9622Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                              <circle cx="12" cy="12" r="3" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg></a>
+                          </td>
+                      </tr>
+                    <%} )%>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div class="sidenav-overlay"></div>
+<div class="drag-target"></div>
+
+<%- include('../common/footer'); -%>
+
+<script>
+  $(document).ready(function () {
+    $('#myTable').DataTable();
+  });
+</script>
+
+<script>
+  setTimeout(function () {
+    $("div.msg").fadeOut();
+  }, 2000);
+</script>
+
+<script>
+  $(document).ready(function () {
+    // alert("ready!");
+  });
+
+  function confirmDelete(id) {
+    console.log(">>>>>>>>done>>>>>>>>>>", id)
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-danger',
+        cancelButton: 'btn btn-success'
+      },
+      buttonsStyling: true
+      
+    })
+
+    // console.log("------------------------------result------", id);
+
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((isConfirm) => {
+      // console.log(isConfirm)
+      // return
+      if (isConfirm.isConfirmed) {
+        // alert('asd')
+        $.ajax({
+          url: "/delete_user/:id",
+          type: 'delete',
+          data: {
+            id: id
+          },
+          success: function (result) { }
+        });
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'The user has been deleted .',
+          'success'
+        ).then(() => {
+          location.reload();
+        })
+      } else {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'The user is safe :)',
+          'error'
+        )
+      }
+    })
+
+  }
+</script>
+
+
+<script>
+  function changeStatusPayment(value, id) {
+
+    $.ajax({
+      type: "post",
+      url: `/status_change`,
+      data: {
+        method_id: id,
+        status: value
+      },
+      success: function(resp) {
+        // console.log('resp: ', resp);
+        location.reload();
+      }
+    })
+  }
+
+</script>

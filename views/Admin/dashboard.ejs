@@ -1,0 +1,369 @@
+<%- include('common/header'); -%>
+<%- include('common/sidebar'); -%>
+
+<!-- BEGIN: Content-->
+<div class="app-content content ">
+  <div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+      <div class="main-content">
+        <section class="section">
+          <div class="card-header border-bottom">
+            <div class="row">
+              <div class="col-6">
+                <h2 class="card-title">Dashboard</h2>
+              </div>
+          
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-3 col-md-5 col-sm-5 col-12">
+              <div class="card" onclick="location.href=''" style="cursor: pointer;">
+                <div class="card-header">
+                  <div>
+                    <h2 class="fw-bolder mb-0">
+                      <%=user%>
+                    </h2>
+                    <p class="card-text">Parking</p>
+                  </div>
+                  <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">
+                      <i class="ph-fill ph-users"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-5 col-sm-5 col-12">
+              <div class="card" onclick="location.href=''" style="cursor: pointer;">
+                <div class="card-header">
+                  <div>
+                    <h2 class="fw-bolder mb-0">
+                      <%=worker%>
+                    </h2>
+                    <p class="card-text">Wheel Chair</p>
+                  </div>
+                  <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">
+                      <i class="ph-fill ph-users-four"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-5 col-sm-5 col-12">
+              <div class="card" onclick="location.href=''" style="cursor: pointer;">
+                <div class="card-header">
+                  <div>
+                    <h2 class="fw-bolder mb-0">
+                      <%=category%>
+                    </h2>
+                    <p class="card-text">Blood collection</p>
+                  </div>
+                  <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">
+                      <i class="ph-fill ph-squares-four"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-5 col-sm-5 col-12">
+              <div class="card" onclick="location.href='' " style="cursor: pointer;">
+                <div class="card-header">
+                  <div>
+                    <h2 class="fw-bolder mb-0">
+                      <%=booking%>
+                    </h2>
+                    <p class="card-text">Registration Desk</p>
+                  </div>
+                  <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">
+                      <i class="ph-fill ph-rows"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+               <div class="col-lg-3 col-md-5 col-sm-5 col-12">
+              <div class="card" onclick="location.href='' " style="cursor: pointer;">
+                <div class="card-header">
+                  <div>
+                    <h2 class="fw-bolder mb-0">
+                      <%=reviews%>
+                    </h2>
+                    <p class="card-text">Help Desk</p>
+                  </div>
+                  <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">
+                      <i class="ph-fill ph-briefcase"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-5 col-sm-5 col-12">
+              <div class="card" onclick="location.href='/dashboard' " style="cursor: pointer;">
+                <div class="card-header">
+                  <div>
+                    <h2 class="fw-bolder mb-0">
+                      <%=completejobs%>
+                    </h2>
+                    <p class="card-text">Nursing care</p>
+                  </div>
+                  <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">
+                      <i class="ph-fill ph-briefcase"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-5 col-sm-5 col-12">
+              <div class="card" onclick="location.href='/dashboard'" style="cursor: pointer;">
+                <div class="card-header">
+                  <div>
+                    <h2 class="fw-bolder mb-0">
+                      <%=withdraw%>
+                    </h2>
+                    <p class="card-text">BP Counter </p>
+                  </div>
+                  <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">
+                      <i class="ph-fill ph-wallet"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-5 col-sm-5 col-12">
+              <div class="card" onclick="location.href=''" style="cursor: pointer;">
+                <div class="card-header">
+                  <div>
+                    <h2 class="fw-bolder mb-0">
+                      <%=reports%>
+                    </h2>
+                    <p class="card-text">Doctor consult</p>
+                  </div>
+                  <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">
+                     <i class="ph-fill ph-chat-dots"></i>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+               <div class="col-lg-3 col-md-5 col-sm-5 col-12">
+              <div class="card" onclick="location.href=''" style="cursor: pointer;">
+                <div class="card-header">
+                  <div>
+                    <h2 class="fw-bolder mb-0">
+                      <%=messages%>
+                    </h2>
+                    <p class="card-text">X-Ray/CT Scan</p>
+                  </div>
+                  <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">
+                      <i class="ph-fill ph-user-circle"></i>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>   <div class="col-lg-3 col-md-5 col-sm-5 col-12">
+              <div class="card" onclick="location.href=''" style="cursor: pointer;">
+                <div class="card-header">
+                  <div>
+                    <h2 class="fw-bolder mb-0">
+                      <%=FAQ%>
+                    </h2>
+                    <p class="card-text">OPD Waiting</p>
+                  </div>
+                  <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">
+                      <i class="ph-fill ph-stethoscope"></i>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>   <div class="col-lg-3 col-md-5 col-sm-5 col-12">
+              <div class="card" onclick="location.href=''" style="cursor: pointer;">
+                <div class="card-header">
+                  <div>
+                    <h2 class="fw-bolder mb-0">
+                      <%=Pharmacy%>
+                    </h2>
+                    <p class="card-text">Pharmacy Info </p>
+                  </div>
+                  <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">
+                      <i class="ph-fill ph-first-aid"></i>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>   <div class="col-lg-3 col-md-5 col-sm-5 col-12">
+              <div class="card" onclick="location.href=''" style="cursor: pointer;">
+                <div class="card-header">
+                  <div>
+                    <h2 class="fw-bolder mb-0">
+                      <%=Physiotherapy%>
+                    </h2>
+                    <p class="card-text">Physiotherapy</p>
+                  </div>
+                  <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">
+                      <i class="ph-fill ph-heart"></i>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>   <div class="col-lg-3 col-md-5 col-sm-5 col-12">
+              <div class="card" onclick="location.href=''" style="cursor: pointer;">
+                <div class="card-header">
+                  <div>
+                    <h2 class="fw-bolder mb-0">
+                      <%=Food%>
+                    </h2>
+                    <p class="card-text">Food Facilities</p>
+                  </div>
+                  <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">
+                      <i class="ph-fill ph-fork-knife"></i>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>   <div class="col-lg-3 col-md-5 col-sm-5 col-12">
+              <div class="card" onclick="location.href=''" style="cursor: pointer;">
+                <div class="card-header">
+                  <div>
+                    <h2 class="fw-bolder mb-0">
+                      <%=Cleanliness%>
+                    </h2>
+                    <p class="card-text">Cleanliness</p>
+                  </div>
+                  <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">
+                      <i class="ph-fill ph-broom"></i>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>   <div class="col-lg-3 col-md-5 col-sm-5 col-12">
+              <div class="card" onclick="location.href=''" style="cursor: pointer;">
+                <div class="card-header">
+                  <div>
+                    <h2 class="fw-bolder mb-0">
+                      <%=Security%>
+                    </h2>
+                    <p class="card-text">Security</p>
+                  </div>
+                  <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">
+                      <i class="ph-fill ph-camera"></i>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>   <div class="col-lg-3 col-md-5 col-sm-5 col-12">
+              <div class="card" onclick="location.href=''" style="cursor: pointer;">
+                <div class="card-header">
+                  <div>
+                    <h2 class="fw-bolder mb-0">
+                      <%=Safe%>
+                    </h2>
+                    <p class="card-text">Safe treatment</p>
+                  </div>
+                  <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">
+                  <i class="ph-fill ph-pill"></i>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>   <div class="col-lg-3 col-md-5 col-sm-5 col-12">
+              <div class="card" onclick="location.href=''" style="cursor: pointer;">
+                <div class="card-header">
+                  <div>
+                    <h2 class="fw-bolder mb-0">
+                      <%=Patient%>
+                    </h2>
+                    <p class="card-text">Patient Rights</p>
+                  </div>
+                  <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">
+                      <i class="ph-fill ph-user"></i>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>   <div class="col-lg-3 col-md-5 col-sm-5 col-12">
+              <div class="card" onclick="location.href=''" style="cursor: pointer;">
+                <div class="card-header">
+                  <div>
+                    <h2 class="fw-bolder mb-0">
+                      <%=Hospital%>
+                    </h2>
+                    <p class="card-text">Staff Commun..</p>
+                  </div>
+                  <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">
+                 <i class="ph-fill ph-handshake"></i>
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>   <div class="col-lg-3 col-md-5 col-sm-5 col-12">
+              <div class="card" onclick="location.href=''" style="cursor: pointer;">
+                <div class="card-header">
+                  <div>
+                    <h2 class="fw-bolder mb-0">
+                      <%=Other%>
+                    </h2>
+                    <p class="card-text">Any Other</p>
+                  </div>
+                  <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar-content">
+                      <i class="ph-fill ph-puzzle-piece"></i>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('common/footer'); -%>
+
+<script>
+  setTimeout(function() {
+    $("div.msg").fadeOut();
+  }, 2000);
+</script>
+
